@@ -1,0 +1,42 @@
+/* Container centers the rectangles and uses flex layout */
+.container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  background: #f5f5f5;
+  user-select: none; /* Prevent text selection during dragging */
+}
+
+/* Base style for each rectangle */
+.rectangle {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  cursor: grab;
+  position: relative;
+}
+
+/* A highlighted border on the drop target to show swap preview */
+.rectangle.drop-target {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Style for the floating (dragging) copy */
+.rectangle.floating {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none; /* So that mouse events pass through to underlying elements */
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: none; /* position is updated instantly as the mouse moves */
+}
